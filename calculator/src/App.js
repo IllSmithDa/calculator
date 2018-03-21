@@ -81,13 +81,44 @@ class App extends Component {
     let totalValue = 0;
     let currentValue = 0;
     let newValue = 0;
-    console.log('hello')
+    let otherValue = 0;
+    //console.log('hello')
     for (let i = 0; i < this.state.inputValues.length; i++) {
-      console.log(this.state.inputValues[i]);
       if (this.state.inputValues[i] === '+') {
         currentValue = this.state.inputValues.splice(currentPostion, i)
-        newValue = currentValue.join('')
-        console.log(newValue);
+        newValue = parseInt(currentValue.join(''))
+        otherValue = this.state.inputValues.splice(i+1)
+        otherValue = parseInt(otherValue.join(''))
+        totalValue = newValue + otherValue;
+        this.setState({currentInput: totalValue, inputValues: [] })
+        break;
+      }
+      if (this.state.inputValues[i] === '-') {
+        currentValue = this.state.inputValues.splice(currentPostion, i)
+        newValue = parseInt(currentValue.join(''))
+        otherValue = this.state.inputValues.splice(i+1)
+        otherValue = parseInt(otherValue.join(''))
+        totalValue = newValue - otherValue;
+        this.setState({currentInput: totalValue, inputValues: []})
+        break;
+      }
+      if (this.state.inputValues[i] === '*') {
+        currentValue = this.state.inputValues.splice(currentPostion, i)
+        newValue = parseInt(currentValue.join(''))
+        otherValue = this.state.inputValues.splice(i+1)
+        otherValue = parseInt(otherValue.join(''))
+        totalValue = newValue * otherValue;
+        this.setState({currentInput: totalValue, inputValues: []})
+        break;
+      }
+      if (this.state.inputValues[i] === '/') {
+        currentValue = this.state.inputValues.splice(currentPostion, i)
+        newValue = parseInt(currentValue.join(''))
+        otherValue = this.state.inputValues.splice(i+1)
+        otherValue = parseInt(otherValue.join(''))
+        totalValue = newValue / otherValue;
+        this.setState({currentInput: totalValue, inputValues: []})
+        break;
       }
     }
   }
