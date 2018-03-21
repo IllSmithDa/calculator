@@ -6,27 +6,42 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      inputValues: []
+      inputValues: [],
+      currentInput: ''
     }
+    this.inputHandler = this.inputHandler.bind(this);
+  }
+  inputHandler(event) {
+    this.setState({ currentInput: event.target.value })
+    console.log(this.state.currentInput)
   }
 
   render() {
     return (
       <div>
         <div>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
+          <h> {this.state.currentInput} </h>
         </div>
         <div>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
+          <button onClick = {this.inputHandler}>1</button>
+          <button onClick = {this.inputHandler}>2</button>
+          <button onClick = {this.inputHandler}>3</button>
         </div>
         <div>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
+          <button onClick = {this.inputHandler}>4</button>
+          <button onClick = {this.inputHandler}>5</button>
+          <button onClick = {this.inputHandler}>6</button>
+        </div>
+        <div>
+          <button onClick = {this.inputHandler}>7</button>
+          <button onClick = {this.inputHandler}>8</button>
+          <button onClick = {this.inputHandler}>9</button>
+        </div>
+        <div>
+          <button onClick = {this.inputHandler}>+</button>
+          <button onClick = {this.inputHandler}>-</button>
+          <button onClick = {this.inputHandler}>*</button>
+          <button onClick = {this.inputHandler}>/</button>
         </div>
       </div>
     );
