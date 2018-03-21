@@ -91,12 +91,9 @@ class App extends Component {
     for (let i = 0; i < this.state.inputValues.length; i++) {
       if (this.state.inputValues[i] === '+') {
         currentValue = this.state.inputValues.slice(currentPostion, i)
-        console.log(currentValue)
         newValue = parseInt(currentValue.join(''))
         otherValue = this.state.inputValues.slice(i)
-        console.log(otherValue);
         otherValue = parseInt(otherValue.join(''))
-        console.log(otherValue);
         totalValue = newValue + otherValue;
         this.setState({currentInput: totalValue, inputValues: [] })
         break;
@@ -104,7 +101,7 @@ class App extends Component {
       if (this.state.inputValues[i] === '-') {
         currentValue = this.state.inputValues.slice(currentPostion, i)
         newValue = parseInt(currentValue.join(''))
-        otherValue = this.state.inputValues.slice(i+1)
+        otherValue = this.state.inputValues.slice(i)
         otherValue = parseInt(otherValue.join(''))
         totalValue = newValue - otherValue;
         this.setState({currentInput: totalValue, inputValues: []})
@@ -113,7 +110,7 @@ class App extends Component {
       if (this.state.inputValues[i] === '*') {
         currentValue = this.state.inputValues.slice(currentPostion, i)
         newValue = parseInt(currentValue.join(''))
-        otherValue = this.state.inputValues.slice(i+1)
+        otherValue = this.state.inputValues.slice(i)
         otherValue = parseInt(otherValue.join(''))
         totalValue = newValue * otherValue;
         this.setState({currentInput: totalValue, inputValues: []})
@@ -122,7 +119,7 @@ class App extends Component {
       if (this.state.inputValues[i] === '/') {
         currentValue = this.state.inputValues.splice(currentPostion, i)
         newValue = parseInt(currentValue.join(''))
-        otherValue = this.state.inputValues.slice(i+1)
+        otherValue = this.state.inputValues.slice(i)
         otherValue = parseInt(otherValue.join(''))
         totalValue = newValue / otherValue;
         this.setState({currentInput: totalValue, inputValues: []})
