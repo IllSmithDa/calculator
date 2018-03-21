@@ -13,9 +13,9 @@ class App extends Component {
   }
   inputHandler(value) {
     this.setState({ currentInput: event.target.value })
+    console.log(this.state.currentInput)
   }
   componentDidMount() {
-    console.log(this.state.currentInput)
   }
   render() {
     return (
