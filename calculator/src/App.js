@@ -11,8 +11,8 @@ class App extends Component {
     }
     this.inputHandler = this.inputHandler.bind(this);
   }
-  inputHandler(event) {
-    this.setState({ currentInput: event.target.value })
+  inputHandler(value) {
+    this.setState({ currentInput: value })
     console.log(this.state.currentInput)
   }
 
@@ -23,7 +23,7 @@ class App extends Component {
           <h> {this.state.currentInput} </h>
         </div>
         <div>
-          <button onClick = {this.inputHandler}>1</button>
+          <button onClick = {this.inputHandler(1)}>1</button>
           <button onClick = {this.inputHandler}>2</button>
           <button onClick = {this.inputHandler}>3</button>
         </div>
