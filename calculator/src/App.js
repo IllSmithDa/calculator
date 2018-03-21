@@ -18,6 +18,7 @@ class App extends Component {
     this.inputSevenHandler = this.inputSevenHandler.bind(this);
     this.inputEightHandler = this.inputEightHandler.bind(this);
     this.inputNineHandler = this.inputNineHandler.bind(this);
+    this.inputPlusHandler = this.inputZeroHandler.bind(this);
     this.inputPlusHandler = this.inputPlusHandler.bind(this);
     this.inputMinusHandler = this.inputMinusHandler.bind(this);
     this.inputMultiplyHandler = this.inputMultiplyHandler.bind(this);
@@ -60,6 +61,10 @@ class App extends Component {
     this.setState({ currentInput: 9})
     this.state.inputValues.push(9);
   }
+  inputZeroHandler() {
+    this.setState({ currentInput: 0})
+    this.state.inputValues.push(0);
+  }
   inputPlusHandler() {
     this.setState({ currentInput: '+'})
     this.state.inputValues.push('+');
@@ -87,8 +92,9 @@ class App extends Component {
       if (this.state.inputValues[i] === '+') {
         currentValue = this.state.inputValues.splice(currentPostion, i)
         newValue = parseInt(currentValue.join(''))
-        otherValue = this.state.inputValues.splice(i+1)
+        otherValue = this.state.inputValues.slice(i+1)
         otherValue = parseInt(otherValue.join(''))
+        console.log(otherValue);
         totalValue = newValue + otherValue;
         this.setState({currentInput: totalValue, inputValues: [] })
         break;
@@ -96,7 +102,7 @@ class App extends Component {
       if (this.state.inputValues[i] === '-') {
         currentValue = this.state.inputValues.splice(currentPostion, i)
         newValue = parseInt(currentValue.join(''))
-        otherValue = this.state.inputValues.splice(i+1)
+        otherValue = this.state.inputValues.slice(i+1)
         otherValue = parseInt(otherValue.join(''))
         totalValue = newValue - otherValue;
         this.setState({currentInput: totalValue, inputValues: []})
@@ -105,7 +111,7 @@ class App extends Component {
       if (this.state.inputValues[i] === '*') {
         currentValue = this.state.inputValues.splice(currentPostion, i)
         newValue = parseInt(currentValue.join(''))
-        otherValue = this.state.inputValues.splice(i+1)
+        otherValue = this.state.inputValues.slice(i+1)
         otherValue = parseInt(otherValue.join(''))
         totalValue = newValue * otherValue;
         this.setState({currentInput: totalValue, inputValues: []})
@@ -114,7 +120,7 @@ class App extends Component {
       if (this.state.inputValues[i] === '/') {
         currentValue = this.state.inputValues.splice(currentPostion, i)
         newValue = parseInt(currentValue.join(''))
-        otherValue = this.state.inputValues.splice(i+1)
+        otherValue = this.state.inputValues.slice(i+1)
         otherValue = parseInt(otherValue.join(''))
         totalValue = newValue / otherValue;
         this.setState({currentInput: totalValue, inputValues: []})
@@ -144,6 +150,7 @@ class App extends Component {
           <button onClick = {this.inputSevenHandler}>7</button>
           <button onClick = {this.inputEightHandler}>8</button>
           <button onClick = {this.inputNineHandler}>9</button>
+          <button onClick = {this.inputZeroHandler}>0</button>
         </div>
         <div>
           <button onClick = {this.inputPlusHandler}>+</button>
