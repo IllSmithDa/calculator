@@ -85,9 +85,9 @@ class App extends Component {
     for (let i = 0; i < this.state.inputValues.length; i++) {
       console.log(this.state.inputValues[i]);
       if (this.state.inputValues[i] === '+') {
-        currentValue = this.state.inputValues.splice(currentPostion, i - 1)
+        currentValue = this.state.inputValues.splice(currentPostion, i)
         newValue = currentValue.join('')
-        console.log(currentValue);
+        console.log(newValue);
       }
     }
   }
