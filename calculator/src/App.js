@@ -112,6 +112,7 @@ class App extends Component {
         newValue = parseInt(currentValue.join(''))
         console.log(newValue);
         otherValue = this.state.inputValues.slice(i)
+        console.log(otherValue);
         otherValue = parseInt(otherValue.join(''))
         console.log(otherValue);
         totalValue = newValue * otherValue;
