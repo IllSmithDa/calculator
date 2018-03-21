@@ -101,7 +101,7 @@ class App extends Component {
       if (this.state.inputValues[i] === '-') {
         currentValue = this.state.inputValues.slice(currentPostion, i)
         newValue = parseInt(currentValue.join(''))
-        otherValue = this.state.inputValues.slice(i)
+        otherValue = this.state.inputValues.slice(i + 1)
         otherValue = parseInt(otherValue.join(''))
         totalValue = newValue - otherValue;
         this.setState({currentInput: totalValue, inputValues: []})
@@ -122,7 +122,7 @@ class App extends Component {
       if (this.state.inputValues[i] === '/') {
         currentValue = this.state.inputValues.splice(currentPostion, i)
         newValue = parseInt(currentValue.join(''))
-        otherValue = this.state.inputValues.slice(i)
+        otherValue = this.state.inputValues.slice(i + 1)
         otherValue = parseInt(otherValue.join(''))
         totalValue = newValue / otherValue;
         this.setState({currentInput: totalValue, inputValues: []})
