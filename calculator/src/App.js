@@ -11,13 +11,13 @@ class App extends Component {
     }
     this.inputOneHandler = this.inputOneHandler.bind(this);
     this.inputTwoHandler = this.inputTwoHandler.bind(this);
-    this.inputThreeHandler = this.inputTwoHandler.bind(this);
-    this.inputFourHandler = this.inputTwoHandler.bind(this);
-    this.inputFiveHandler = this.inputTwoHandler.bind(this);
-    this.inputSixHandler = this.inputTwoHandler.bind(this);
-    this.inputSevenHandler = this.inputTwoHandler.bind(this);
-    this.inputEightHandler = this.inputTwoHandler.bind(this);
-    this.inputNineHandler = this.inputTwoHandler.bind(this);
+    this.inputThreeHandler = this.inputThreeHandler.bind(this);
+    this.inputFourHandler = this.inputFourHandler.bind(this);
+    this.inputFiveHandler = this.inputFiveHandler .bind(this);
+    this.inputSixHandler = this.inputSixHandler.bind(this);
+    this.inputSevenHandler = this.inputSevenHandler.bind(this);
+    this.inputEightHandler = this.inputEightHandler.bind(this);
+    this.inputNineHandler = this.inputNineHandler.bind(this);
     this.inputPlusHandler = this.inputPlusHandler.bind(this);
     this.inputMinusHandler = this.inputMinusHandler.bind(this);
     this.inputMultiplyHandler = this.inputMultiplyHandler.bind(this);
@@ -31,6 +31,36 @@ class App extends Component {
   }
   inputThreeHandler() {
     this.setState({ currentInput: 3})
+  }
+  inputFourHandler() {
+    this.setState({ currentInput: 4})
+  }
+  inputFiveHandler() {
+    this.setState({ currentInput: 5})
+  }
+  inputSixHandler() {
+    this.setState({ currentInput: 6})
+  }
+  inputSevenHandler() {
+    this.setState({ currentInput: 7})
+  }
+  inputEightHandler() {
+    this.setState({ currentInput: 8})
+  }
+  inputNineHandler() {
+    this.setState({ currentInput: 9})
+  }
+  inputPlusHandler() {
+    this.setState({ currentInput: '+'})
+  }
+  inputMinusHandler() {
+    this.setState({ currentInput: '-'})
+  }
+  inputMultiplyHandler() {
+    this.setState({ currentInput: '/'})
+  }
+  inputDivideHandler() {
+    this.setState({ currentInput: '*'})
   }
   componentDidMount() {
   }
