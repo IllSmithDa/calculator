@@ -90,7 +90,8 @@ class App extends Component {
     //console.log('hello')
     for (let i = 0; i < this.state.inputValues.length; i++) {
       if (this.state.inputValues[i] === '+') {
-        currentValue = this.state.inputValues.splice(currentPostion, i)
+        currentValue = this.state.inputValues.slice(currentPostion, i)
+        console.log(currentValue)
         newValue = parseInt(currentValue.join(''))
         otherValue = this.state.inputValues.slice(i)
         console.log(otherValue);
@@ -101,7 +102,7 @@ class App extends Component {
         break;
       }
       if (this.state.inputValues[i] === '-') {
-        currentValue = this.state.inputValues.splice(currentPostion, i)
+        currentValue = this.state.inputValues.slice(currentPostion, i)
         newValue = parseInt(currentValue.join(''))
         otherValue = this.state.inputValues.slice(i+1)
         otherValue = parseInt(otherValue.join(''))
@@ -110,7 +111,7 @@ class App extends Component {
         break;
       }
       if (this.state.inputValues[i] === '*') {
-        currentValue = this.state.inputValues.splice(currentPostion, i)
+        currentValue = this.state.inputValues.slice(currentPostion, i)
         newValue = parseInt(currentValue.join(''))
         otherValue = this.state.inputValues.slice(i+1)
         otherValue = parseInt(otherValue.join(''))
