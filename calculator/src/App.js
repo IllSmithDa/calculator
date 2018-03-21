@@ -83,6 +83,7 @@ class App extends Component {
     for (let i = 0; i < this.state.inputValues; i++) {
       if (this.state.inputValues[i] === '+') {
         currentValue = parseInt(this.state.inputValues.splice(currentPostion, i - 1).join())
+        console.log(currentValue);
       }
     }
   }
