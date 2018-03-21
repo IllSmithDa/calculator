@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 
 class App extends Component {
@@ -92,7 +92,7 @@ class App extends Component {
       if (this.state.inputValues[i] === '+') {
         currentValue = this.state.inputValues.slice(currentPostion, i)
         newValue = parseInt(currentValue.join(''))
-        otherValue = this.state.inputValues.slice(i)
+        otherValue = this.state.inputValues.slice(i + 1)
         otherValue = parseInt(otherValue.join(''))
         totalValue = newValue + otherValue;
         this.setState({currentInput: totalValue, inputValues: [] })
@@ -136,7 +136,7 @@ class App extends Component {
     return (
       <div>
         <div>
-          <h> {this.state.currentInput} </h>
+          <h1> {this.state.currentInput} </h1>
         </div>
         <div>
           <button onClick = {this.inputOneHandler}>1</button>
