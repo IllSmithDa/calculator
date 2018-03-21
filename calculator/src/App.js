@@ -7,15 +7,16 @@ class App extends Component {
     super();
     this.state = {
       inputValues: [],
-      currentInput: ''
+      currentInput: `Sam's calculator`
     }
     this.inputHandler = this.inputHandler.bind(this);
   }
   inputHandler(value) {
-    this.setState({ currentInput: value })
+    this.setState({ currentInput: event.target.value })
+  }
+  componentDidMount() {
     console.log(this.state.currentInput)
   }
-
   render() {
     return (
       <div>
@@ -23,7 +24,7 @@ class App extends Component {
           <h> {this.state.currentInput} </h>
         </div>
         <div>
-          <button onClick = {this.inputHandler(1)}>1</button>
+          <button onClick = {this.inputHandler} value = {1}>1</button>
           <button onClick = {this.inputHandler}>2</button>
           <button onClick = {this.inputHandler}>3</button>
         </div>
