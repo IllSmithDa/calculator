@@ -120,13 +120,13 @@ class App extends Component {
         break;
       }
       if (this.state.inputValues[i] === '/') {
-        currentValue = this.state.inputValues.splice(currentPostion, i)
+        currentValue = this.state.inputValues.slice(currentPostion, i)
         newValue = parseInt(currentValue.join(''))
-        // console.log(newValue);
-        otherValue = this.state.inputValues.slice(i)
-        // console.log(otherValue);
+        console.log(newValue);
+        otherValue = this.state.inputValues.slice(i + 1)
+        console.log(otherValue);
         otherValue = parseInt(otherValue.join(''))
-        // console.log(otherValue);
+        console.log(otherValue);
         totalValue = newValue / otherValue;
         this.setState({currentInput: totalValue, inputValues: []})
         break;
