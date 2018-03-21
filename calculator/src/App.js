@@ -22,45 +22,70 @@ class App extends Component {
     this.inputMinusHandler = this.inputMinusHandler.bind(this);
     this.inputMultiplyHandler = this.inputMultiplyHandler.bind(this);
     this.inputDivideHandler = this.inputDivideHandler.bind(this);
+    this.inputEqualsHandler = this.inputEqualsHandler.bind(this);
   }
   inputOneHandler() {
     this.setState({ currentInput: 1})
+    this.state.inputValues.push(1);
   }
   inputTwoHandler() {
     this.setState({ currentInput: 2})
+    this.state.inputValues.push(2);
   }
   inputThreeHandler() {
     this.setState({ currentInput: 3})
+    this.state.inputValues.push(3);
   }
   inputFourHandler() {
     this.setState({ currentInput: 4})
+    this.state.inputValues.push(4);
   }
   inputFiveHandler() {
     this.setState({ currentInput: 5})
+    this.state.inputValues.push(5);
   }
   inputSixHandler() {
     this.setState({ currentInput: 6})
+    this.state.inputValues.push(6);
   }
   inputSevenHandler() {
     this.setState({ currentInput: 7})
+    this.state.inputValues.push(7);
   }
   inputEightHandler() {
     this.setState({ currentInput: 8})
+    this.state.inputValues.push(8);
   }
   inputNineHandler() {
     this.setState({ currentInput: 9})
+    this.state.inputValues.push(9);
   }
   inputPlusHandler() {
     this.setState({ currentInput: '+'})
+    this.state.inputValues.push('+');
   }
   inputMinusHandler() {
     this.setState({ currentInput: '-'})
+    this.state.inputValues.push('-');
   }
   inputMultiplyHandler() {
-    this.setState({ currentInput: '/'})
+    this.setState({ currentInput: '*'})
+    this.state.inputValues.push('*');
   }
   inputDivideHandler() {
-    this.setState({ currentInput: '*'})
+    this.setState({ currentInput: '/'})
+    this.state.inputValues.push('/');
+  }
+  inputEqualsHandler() {
+    currentPostion = 0;
+    totalValue = 0;
+    currentValue = 0;
+    for (let i = 0; i < this.state.inputValues; i++) {
+      if (this.state.inputValues[i] === '+') {
+        currentValue = parseInt(this.state.inputValues.splice(currentPostion, i - 1).join())
+
+      }
+    }
   }
   componentDidMount() {
   }
@@ -90,6 +115,7 @@ class App extends Component {
           <button onClick = {this.inputMinusHandler}>-</button>
           <button onClick = {this.inputMultiplyHandler}>*</button>
           <button onClick = {this.inputDivideHandler}>/</button>
+          <button onClick = {this.inputEqualsHandler}>=</button>
         </div>
       </div>
     );
