@@ -13,7 +13,7 @@ class App extends Component {
     this.inputTwoHandler = this.inputTwoHandler.bind(this);
     this.inputThreeHandler = this.inputThreeHandler.bind(this);
     this.inputFourHandler = this.inputFourHandler.bind(this);
-    this.inputFiveHandler = this.inputFiveHandler .bind(this);
+    this.inputFiveHandler = this.inputFiveHandler.bind(this);
     this.inputSixHandler = this.inputSixHandler.bind(this);
     this.inputSevenHandler = this.inputSevenHandler.bind(this);
     this.inputEightHandler = this.inputEightHandler.bind(this);
