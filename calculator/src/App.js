@@ -50,6 +50,10 @@ class App extends Component {
     this.setState({ currentInput: 0})
     this.state.inputValues.push(0);
   }
+  dotHandler = () => {
+    this.setState({ currentInput: '.' })
+    this.state.inputValues.push('.');
+  }
   inputPlusHandler = () => {
     this.setState({ currentInput: '+'})
     this.state.inputValues.push('+');
@@ -76,29 +80,30 @@ class App extends Component {
     for (let i = 0; i < this.state.inputValues.length; i++) {
       if (this.state.inputValues[i] === '+') {
         currentValue = this.state.inputValues.slice(currentPostion, i)
-        newValue = parseInt(currentValue.join(''))
+        newValue = parseFloat(currentValue.join(''))
+        console.log(newValue);
         otherValue = this.state.inputValues.slice(i + 1)
-        otherValue = parseInt(otherValue.join(''))
+        otherValue = parseFloat(otherValue.join(''))
         totalValue = newValue + otherValue;
         this.setState({currentInput: totalValue, inputValues: [] })
         break;
       }
       if (this.state.inputValues[i] === '-') {
         currentValue = this.state.inputValues.slice(currentPostion, i)
-        newValue = parseInt(currentValue.join(''))
+        newValue = parseFloat(currentValue.join(''))
         otherValue = this.state.inputValues.slice(i + 1)
-        otherValue = parseInt(otherValue.join(''))
+        otherValue = parseFloat(otherValue.join(''))
         totalValue = newValue - otherValue;
         this.setState({currentInput: totalValue, inputValues: []})
         break;
       }
       if (this.state.inputValues[i] === '*') {
         currentValue = this.state.inputValues.slice(currentPostion, i)
-        newValue = parseInt(currentValue.join(''))
+        newValue = parseFloat(currentValue.join(''))
         // console.log(newValue);
         otherValue = this.state.inputValues.slice(i + 1)
         // console.log(otherValue);
-        otherValue = parseInt(otherValue.join(''))
+        otherValue = parseFloat(otherValue.join(''))
         // console.log(otherValue);
         totalValue = newValue * otherValue;
         this.setState({currentInput: totalValue, inputValues: []})
@@ -106,11 +111,11 @@ class App extends Component {
       }
       if (this.state.inputValues[i] === '/') {
         currentValue = this.state.inputValues.slice(currentPostion, i)
-        newValue = parseInt(currentValue.join(''))
+        newValue = parseFloat(currentValue.join(''))
         // console.log(newValue);
         otherValue = this.state.inputValues.slice(i + 1)
         // console.log(otherValue);
-        otherValue = parseInt(otherValue.join(''))
+        otherValue = parseFloat(otherValue.join(''))
         // console.log(otherValue);
         totalValue = newValue / otherValue;
         this.setState({currentInput: totalValue, inputValues: []})
@@ -121,39 +126,53 @@ class App extends Component {
   clearHandler = () => {
     this.setState({ inputValues: [], currentInput: "Sam's Calculator" });
   }
+  deleteHandler = () => {
+    this.state.inputValues.pop();
+    if (this.state.inputValues.length === 0) {
+      this.setState({ currentInput: "Sam's Calculator" })
+    }
+    this.setState({ inputValues: this.state.inputValues })
+  }
   render = () => {
     return (
       <div>
         <div>
+          <h1> {this.state.inputValues.join('')}</h1>
           <h1> {this.state.currentInput} </h1>
         </div>
         <div>
-          <button onClick = {this.inputOneHandler}>1</button>
-          <button onClick = {this.inputTwoHandler}>2</button>
-          <button onClick = {this.inputThreeHandler}>3</button>
+          <button className="App-button" onClick = {this.inputOneHandler}><p className="App-button-text">1</p></button>
+          <button className="App-button" onClick = {this.inputTwoHandler}><p className="App-button-text">2</p></button>
+          <button className="App-button" onClick = {this.inputThreeHandler}><p className="App-button-text">3</p></button>
+          <button className="App-button" onClick = {this.deleteHandler}><p className="App-button-text">Del</p></button>
         </div>
         <div>
-          <button onClick = {this.inputFourHandler}>4</button>
-          <button onClick = {this.inputFiveHandler}>5</button>
-          <button onClick = {this.inputSixHandler}>6</button>
+          <button className="App-button" onClick = {this.inputFourHandler}><p className="App-button-text">4</p></button>
+          <button className="App-button" onClick = {this.inputFiveHandler}><p className="App-button-text">5</p></button>
+          <button className="App-button" onClick = {this.inputSixHandler}><p className="App-button-text">6</p></button>
         </div>
         <div>
-          <button onClick = {this.inputSevenHandler}>7</button>
-          <button onClick = {this.inputEightHandler}>8</button>
-          <button onClick = {this.inputNineHandler}>9</button>
-          <button onClick = {this.inputZeroHandler}>0</button>
+          <button className="App-button" onClick = {this.inputSevenHandler}><p className="App-button-text">7</p></button>
+          <button className="App-button" onClick = {this.inputEightHandler}><p className="App-button-text">8</p></button>
+          <button className="App-button" onClick = {this.inputNineHandler}><p className="App-button-text">9</p></button>
         </div>
         <div>
-          <button onClick = {this.inputPlusHandler}>+</button>
-          <button onClick = {this.inputMinusHandler}>-</button>
-          <button onClick = {this.inputMultiplyHandler}>*</button>
-          <button onClick = {this.inputDivideHandler}>/</button>
-          <button onClick = {this.inputEqualsHandler}>=</button>
-          <button onClick = {this.clearHandler}>Clear</button>
+          <button className="App-button" onClick = {this.inputZeroHandler}><p className="App-button-text">0</p></button>
+          <button className="App-button" onClick = {this.dotHandler}><p className="App-button-text">.</p></button>
+          <button className="App-button" onClick = {this.inputPlusHandler}><p className="App-button-text">+</p></button>
+        </div>
+        <div>
+          <button className="App-button" onClick = {this.inputMinusHandler}><p className="App-button-text">-</p></button>
+          <button className="App-button" onClick = {this.inputMultiplyHandler}><p className="App-button-text">*</p></button>
+          <button className="App-button" onClick = {this.inputDivideHandler}><p className="App-button-text">/</p></button>
+          <button className="App-button" onClick = {this.inputEqualsHandler}><p className="App-button-text">=</p></button>
+        </div>
+        <div>
+          <button className="App-button" onClick = {this.clearHandler}><p className="App-button-text">Clear</p></button>
         </div>
       </div>
     );
   }
 }
-
+//   <button className="App-special-button" onClick = {this.factHandler}><p className="App-button-text">Give me a random fact!</p></button>
 export default App;
