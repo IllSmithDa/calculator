@@ -3,85 +3,70 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
-  constructor() {
+  constructor () {
     super();
     this.state = {
       inputValues: [],
       currentInput: `Sam's calculator`
     }
-    this.inputOneHandler = this.inputOneHandler.bind(this);
-    this.inputTwoHandler = this.inputTwoHandler.bind(this);
-    this.inputThreeHandler = this.inputThreeHandler.bind(this);
-    this.inputFourHandler = this.inputFourHandler.bind(this);
-    this.inputFiveHandler = this.inputFiveHandler.bind(this);
-    this.inputSixHandler = this.inputSixHandler.bind(this);
-    this.inputSevenHandler = this.inputSevenHandler.bind(this);
-    this.inputEightHandler = this.inputEightHandler.bind(this);
-    this.inputNineHandler = this.inputNineHandler.bind(this);
-    this.inputZeroHandler = this.inputZeroHandler.bind(this);
-    this.inputPlusHandler = this.inputPlusHandler.bind(this);
-    this.inputMinusHandler = this.inputMinusHandler.bind(this);
-    this.inputMultiplyHandler = this.inputMultiplyHandler.bind(this);
-    this.inputDivideHandler = this.inputDivideHandler.bind(this);
-    this.inputEqualsHandler = this.inputEqualsHandler.bind(this);
   }
-  inputOneHandler() {
+  inputOneHandler = () => {
     this.setState({ currentInput: 1})
     this.state.inputValues.push(1);
   }
-  inputTwoHandler() {
+  inputTwoHandler = () => {
     this.setState({ currentInput: 2})
     this.state.inputValues.push(2);
   }
-  inputThreeHandler() {
+  inputThreeHandler = () => {
     this.setState({ currentInput: 3})
     this.state.inputValues.push(3);
   }
-  inputFourHandler() {
+  inputFourHandler = () => {
     this.setState({ currentInput: 4})
     this.state.inputValues.push(4);
   }
-  inputFiveHandler() {
+  inputFiveHandler = () => {
     this.setState({ currentInput: 5})
     this.state.inputValues.push(5);
   }
-  inputSixHandler() {
+  inputSixHandler = () => {
     this.setState({ currentInput: 6})
     this.state.inputValues.push(6);
   }
-  inputSevenHandler() {
+  inputSevenHandler = () => {
     this.setState({ currentInput: 7})
     this.state.inputValues.push(7);
   }
-  inputEightHandler() {
+  inputEightHandler = () => {
     this.setState({ currentInput: 8})
     this.state.inputValues.push(8);
   }
-  inputNineHandler() {
+  inputNineHandler = () => {
     this.setState({ currentInput: 9})
     this.state.inputValues.push(9);
   }
-  inputZeroHandler() {
+  inputZeroHandler = () => {
     this.setState({ currentInput: 0})
     this.state.inputValues.push(0);
   }
-  inputPlusHandler() {
+  inputPlusHandler = () => {
     this.setState({ currentInput: '+'})
     this.state.inputValues.push('+');
   }
-  inputMinusHandler() {
+  inputMinusHandler = () => {
     this.setState({ currentInput: '-'})
     this.state.inputValues.push('-');
   }
-  inputMultiplyHandler() {
+  inputMultiplyHandler = () => {
     this.setState({ currentInput: '*'})
     this.state.inputValues.push('*');
   }
-  inputDivideHandler() {
+  inputDivideHandler = () => {
     this.setState({ currentInput: '/'})
     this.state.inputValues.push('/');
   }
-  inputEqualsHandler() {
+  inputEqualsHandler = () => {
     let currentPostion = 0;
     let totalValue = 0;
     let currentValue = 0;
@@ -133,9 +118,10 @@ class App extends Component {
       }
     }
   }
-  componentDidMount() {
+  clearHandler = () => {
+    this.setState({ inputValues: [], currentInput: "Sam's Calculator" });
   }
-  render() {
+  render = () => {
     return (
       <div>
         <div>
@@ -163,6 +149,7 @@ class App extends Component {
           <button onClick = {this.inputMultiplyHandler}>*</button>
           <button onClick = {this.inputDivideHandler}>/</button>
           <button onClick = {this.inputEqualsHandler}>=</button>
+          <button onClick = {this.clearHandler}>Clear</button>
         </div>
       </div>
     );
