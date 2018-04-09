@@ -6,122 +6,171 @@ class App extends Component {
   constructor () {
     super();
     this.state = {
+      numberArr: [],
       inputValues: [],
+      finishedMethod: false,
       currentInput: `Sam's calculator`
     }
   }
   inputOneHandler = () => {
-    this.setState({ currentInput: 1})
+    // clears the state to start a new expression. When person enters number after equal sign,
+    // it means they want to start a fresh new expression. We only want to though if the equal 
+    // sign has been just pressed. 
+    if (this.state.finishedMethod) {
+      this.state.numberArr = [];
+      this.state.inputValues = [];
+    }
+    this.setState({ currentInput: 1, finishedMethod: false })
     this.state.inputValues.push(1);
   }
   inputTwoHandler = () => {
-    this.setState({ currentInput: 2})
+    if (this.state.finishedMethod) {
+      this.state.numberArr = [];
+      this.state.inputValues = [];
+    }
+    this.setState({ currentInput: 2, finishedMethod: false })
     this.state.inputValues.push(2);
   }
   inputThreeHandler = () => {
-    this.setState({ currentInput: 3})
+    if (this.state.finishedMethod) {
+      this.state.numberArr = [];
+      this.state.inputValues = [];
+    }
+    this.setState({ currentInput: 3, finishedMethod: false })
     this.state.inputValues.push(3);
   }
   inputFourHandler = () => {
-    this.setState({ currentInput: 4})
+    if (this.state.finishedMethod) {
+      this.state.numberArr = [];
+      this.state.inputValues = [];
+    }
+    this.setState({ currentInput: 4, finishedMethod: false })
     this.state.inputValues.push(4);
   }
   inputFiveHandler = () => {
-    this.setState({ currentInput: 5})
+    if (this.state.finishedMethod) {
+      this.state.numberArr = [];
+      this.state.inputValues = [];
+    }
+    this.setState({ currentInput: 5, finishedMethod: false })
     this.state.inputValues.push(5);
   }
   inputSixHandler = () => {
-    this.setState({ currentInput: 6})
+    if (this.state.finishedMethod) {
+      this.state.numberArr = [];
+      this.state.inputValues = [];
+    }
+    this.setState({ currentInput: 6, finishedMethod: false })
     this.state.inputValues.push(6);
   }
   inputSevenHandler = () => {
-    this.setState({ currentInput: 7})
+    if (this.state.finishedMethod) {
+      this.state.numberArr = [];
+      this.state.inputValues = [];
+    }
+    this.setState({ currentInput: 7, finishedMethod: false })
     this.state.inputValues.push(7);
   }
   inputEightHandler = () => {
-    this.setState({ currentInput: 8})
+    if (this.state.finishedMethod) {
+      this.state.numberArr = [];
+      this.state.inputValues = [];
+    }
+    this.setState({ currentInput: 8, finishedMethod: false })
     this.state.inputValues.push(8);
   }
   inputNineHandler = () => {
-    this.setState({ currentInput: 9})
+    if (this.state.finishedMethod) {
+      this.state.numberArr = [];
+      this.state.inputValues = [];
+    }
+    this.setState({ currentInput: 9, finishedMethod: false })
     this.state.inputValues.push(9);
   }
   inputZeroHandler = () => {
-    this.setState({ currentInput: 0})
+    if (this.state.finishedMethod) {
+      this.state.numberArr = [];
+      this.state.inputValues = [];
+    }
+    this.setState({ currentInput: 0, finishedMethod: false })
     this.state.inputValues.push(0);
   }
   dotHandler = () => {
-    this.setState({ currentInput: '.' })
+    if (this.state.finishedMethod) {
+      this.state.numberArr = [];
+      this.state.inputValues = [];
+    }
+    this.setState({ currentInput: '.', finishedMethod: false })
     this.state.inputValues.push('.');
   }
   inputPlusHandler = () => {
-    this.setState({ currentInput: '+'})
+    // Do not reset the state when using an operator because it is used to 
+    // continue an expression but never to start a new one
+    this.setState({ currentInput: '+', finishedMethod: false })
     this.state.inputValues.push('+');
   }
   inputMinusHandler = () => {
-    this.setState({ currentInput: '-'})
+    this.setState({ currentInput: '-', finishedMethod: false })
     this.state.inputValues.push('-');
   }
   inputMultiplyHandler = () => {
-    this.setState({ currentInput: '*'})
+    this.setState({ currentInput: '*', finishedMethod: false })
     this.state.inputValues.push('*');
   }
   inputDivideHandler = () => {
-    this.setState({ currentInput: '/'})
+    this.setState({ currentInput: '/', finishedMethod: false })
     this.state.inputValues.push('/');
   }
   inputEqualsHandler = () => {
-    let currentPostion = 0;
     let totalValue = 0;
-    let currentValue = 0;
-    let newValue = 0;
-    let otherValue = 0;
-    //console.log('hello')
+    const mathFunction = this.state.inputValues;
+    let methodArr = [];
+    let tempNum = '';
+    // console.log(mathFunction);
+   // console.log(totalValue);
+    
+   // add all operators to one array
     for (let i = 0; i < this.state.inputValues.length; i++) {
-      if (this.state.inputValues[i] === '+') {
-        currentValue = this.state.inputValues.slice(currentPostion, i)
-        newValue = parseFloat(currentValue.join(''))
-        console.log(newValue);
-        otherValue = this.state.inputValues.slice(i + 1)
-        otherValue = parseFloat(otherValue.join(''))
-        totalValue = newValue + otherValue;
-        this.setState({currentInput: totalValue, inputValues: [] })
-        break;
+      if (mathFunction[i] === '+' ||mathFunction[i] === '-' || mathFunction[i] === '*' || mathFunction[i] ==='/') {
+        methodArr.push(this.state.inputValues[i]);
+        // send numbers to another array
+        this.state.numberArr.push(tempNum);
+        tempNum = '';
+        continue;
       }
-      if (this.state.inputValues[i] === '-') {
-        currentValue = this.state.inputValues.slice(currentPostion, i)
-        newValue = parseFloat(currentValue.join(''))
-        otherValue = this.state.inputValues.slice(i + 1)
-        otherValue = parseFloat(otherValue.join(''))
-        totalValue = newValue - otherValue;
-        this.setState({currentInput: totalValue, inputValues: []})
-        break;
-      }
-      if (this.state.inputValues[i] === '*') {
-        currentValue = this.state.inputValues.slice(currentPostion, i)
-        newValue = parseFloat(currentValue.join(''))
-        // console.log(newValue);
-        otherValue = this.state.inputValues.slice(i + 1)
-        // console.log(otherValue);
-        otherValue = parseFloat(otherValue.join(''))
-        // console.log(otherValue);
-        totalValue = newValue * otherValue;
-        this.setState({currentInput: totalValue, inputValues: []})
-        break;
-      }
-      if (this.state.inputValues[i] === '/') {
-        currentValue = this.state.inputValues.slice(currentPostion, i)
-        newValue = parseFloat(currentValue.join(''))
-        // console.log(newValue);
-        otherValue = this.state.inputValues.slice(i + 1)
-        // console.log(otherValue);
-        otherValue = parseFloat(otherValue.join(''))
-        // console.log(otherValue);
-        totalValue = newValue / otherValue;
-        this.setState({currentInput: totalValue, inputValues: []})
-        break;
-      }
+      // concat the numbers until a operator is reached
+      tempNum = tempNum.concat(mathFunction[i]);
+      if (i === this.state.inputValues.length -1 ) this.state.numberArr.push(tempNum);
     }
+    
+    // console.log(this.state.numberArr)
+    // console.log(methodArr);
+    let numCounter = 1;
+    totalValue = this.state.numberArr[0];
+    // loop through operator array
+    for (let i = 0; i < methodArr.length; i++) {
+      if (methodArr[i] === '/') {
+        // perform matching operation with th set total and the numbers in number array
+        totalValue = parseFloat(Number(totalValue) / Number(this.state.numberArr[numCounter]));
+        // console.log(totalValue  )
+      }
+      if (methodArr[i] === '+') {
+        // console.log(Number(totalValue));
+        totalValue = parseFloat(Number(totalValue) + Number(this.state.numberArr[numCounter]));
+        // console.log(totalValue)
+      }
+      if (methodArr[i] === '*') {
+        totalValue = parseFloat(Number(totalValue) * Number(this.state.numberArr[numCounter]));
+      }
+      if (methodArr[i] === '-') {
+        totalValue = parseFloat(Number(totalValue)  - Number(this.state.numberArr[numCounter]));
+      }
+      numCounter += 1;
+    }
+    this.state.numberArr = [];
+    this.state.inputValues = [];
+    this.state.inputValues.push(totalValue);
+    this.setState({finishedMethod: true });
   }
   clearHandler = () => {
     this.setState({ inputValues: [], currentInput: "Sam's Calculator" });
