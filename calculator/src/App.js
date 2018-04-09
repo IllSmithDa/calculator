@@ -142,7 +142,6 @@ class App extends Component {
       tempNum = tempNum.concat(mathFunction[i]);
       if (i === this.state.inputValues.length -1 ) this.state.numberArr.push(tempNum);
     }
-    
     // console.log(this.state.numberArr)
     // console.log(methodArr);
     let numCounter = 1;
